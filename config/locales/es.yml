@@ -8,5 +8,3 @@ es:
   email_message: "Gracias por subscribirte a Micolet!"
   errors:
     failed: "Algo salió mal, intenta nuevamente más tarde."
-    preferences:
-      empty: "Elige al menos una preferencia."

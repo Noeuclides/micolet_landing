@@ -1,39 +1,39 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user_suscription_form
   before_action :set_preferences
 
   def new; end
 
   def create
     begin
-      @user = UserCreationService
-                .new(user_params[:email], user_params[:preference_ids])
-                .call
+      @user_subscription = UserSubscriptionForm.new user_subscription_form_params
+      UserSubscriptionService.new(@user_subscription).call
 
       flash[:success] = t('success')
       redirect_to root_path
-    rescue UserCreationService::EmailTakenError, UserCreationService::EmailBlankError,
-      UserCreationService::EmailInvalidError, UserCreationService::EmptyPreferencesError => e
-      flash[:error] = e.message
-      redirect_to root_path
+    rescue UserSubscriptionService::Error => e
+      respond_to do |format|
+        format.turbo_stream { render :'users/create/invalid', status: :unprocessable_entity, locals: { error: e.message } }
+      end
     rescue StandardError => e
       STDERR.puts e
-      flash[:error] = t('errors.failed')
-      redirect_to root_path
+      respond_to do |format|
+        format.turbo_stream { render :'users/create/invalid', status: :unprocessable_entity, locals: { error:  t('errors.failed') } }
+      end
     end
   end
 
   private
 
-  def user_params
-    params.require(User.model_name.param_key.to_sym).permit(:email, preference_ids: [])
+  def user_subscription_form_params
+    params.require(UserSubscriptionForm.model_name.param_key.to_sym).permit(:email, preferences: [])
   end
 
   def set_preferences
     @preferences = Preference.all
   end
 
-  def set_user
-    @user = User.new
+  def set_user_suscription_form
+    @user_subscription = UserSubscriptionForm.new
   end
 end

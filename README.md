@@ -28,20 +28,17 @@ The above Rails tasks can be executed in a single instruction:
 ```bash
 $ rails db:drop db:create db:migrate db:test:prepare
 ```
-2) Run seeds
+
+2) Create a .env file and set your ABSTRACT_API_KEY. You MUST create an account in [ABSTRACTAPI!](https://app.abstractapi.com/api/email-validation/documentation).
+
+3) Run seeds
 ```bash
 $ rails db:seed --trace
 ```
 
-3) Create a .env file and set your ABSTRACT_API_KEY. You must create and account in [abstractapi](https://app.abstractapi.com/api/email-validation/documentation).
-
-4) In one console run the rails server
+4) Run rails server
 ```bash
 $ rails s
-```
-In another console run
-```bash
-$ rails tailwindcss:watch
 ```
 
 To Run specs

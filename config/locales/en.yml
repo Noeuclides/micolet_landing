@@ -7,6 +7,5 @@ en:
   email_message: "Thanks for subscribing to Micolet!"
   errors:
     failed: "Something went wrong, try later."
-    preferences:
-      empty: "Choose at least one preference"
+
 

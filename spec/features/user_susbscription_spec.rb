@@ -11,7 +11,6 @@ RSpec.feature 'User subscription', type: :feature do
       subscribe(email: email)
 
       expect(page).to have_content I18n.t('success')
-
       expect(User.count).to eq(1)
       expect(User.first.email).to eq(email)
       expect(ActionMailer::Base.deliveries.count).to eq(1)
@@ -60,12 +59,12 @@ RSpec.feature 'User subscription', type: :feature do
     end
   end
 
-  context 'when any preference is selected' do
+  context 'when no preference is selected' do
     include_context 'stub_abstract_api_shared_context'
 
     it 'displays preferences error' do
       subscribe(email: email, check_preference: false)
-      expect(page).to have_content I18n.t('errors.preferences.empty')
+      expect(page).to have_content I18n.t('activerecord.errors.models.user.attributes.preferences.blank')
     end
   end
 

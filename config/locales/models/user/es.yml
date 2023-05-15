@@ -8,4 +8,5 @@ es:
               blank: "Ingresa un email."
               invalid: "Email inválido."
               taken: "Ya existe este email."
-    
+            preferences:
+              blank: "Elige al menos una preferencia."

@@ -8,4 +8,6 @@ en:
               blank: "Email can't be blank"
               invalid: "Invalid email"
               taken: "Email Already Exists"
+            preferences:
+              empty: "Choose at least one preference"
     
