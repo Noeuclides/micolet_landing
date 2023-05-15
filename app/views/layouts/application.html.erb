@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MicoletLanding</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="flex flex-col justify-center">
+      <div class="flex justify-center items-center m-8">
+        <img class="h-24" src="https://d30o7qbghf97ws.cloudfront.net/micolet-logo.svg">
+      </div>
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+es:
+  welcome_message: "Bienvenido! Pronto lanzaremos nuestra página en este país."
+  subscribe_message: "Subscríbete para recibir nuestro boletín."
+  email: "Email"
+  preferences: "Preferencias"
+  subscribe: "Subscribirme!"
+  success: "Gracias por subscribirte, debes haber recibido un correo"
+  email_message: "Gracias por subscribirte a Micolet!"
+  errors:
+    failed: "Algo salió mal, intenta nuevamente más tarde."
+    preferences:
+      empty: "Elige al menos una preferencia."

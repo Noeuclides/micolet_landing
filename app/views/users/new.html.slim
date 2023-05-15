@@ -1,0 +1,36 @@
+div class="max-w-md mx-auto mt-4"
+  div class="text-sm md:text-lg text-center font-bold text-gray-500 mb-3"
+    = t('welcome_message')
+
+  div class="text-center text-gray-500 mb-3"
+    = t('subscribe_message')
+
+  - if flash[:success].present?
+    div class="text-center text-green-500 mb-3"
+      = flash[:success]
+
+  div.m-8
+    = form_with model: @user, url: users_create_path, local: true, class: "" do |form|
+      div.mb-4
+        div class="text-gray-500 mb-4"
+          = form.label :email, t('email')
+        div
+          = form.text_field :email,
+                  class: "border border-green-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
+
+      div.mb-4
+        div class="text-gray-500 mb-4"
+          = form.label :preference_ids, t('preferences')
+        = form.collection_check_boxes(:preference_ids, @preferences, :id, :name, include_hidden: false) do |b|
+          div
+            = b.label class: "pl-4" do
+              = b.check_box class:"form-checkbox text-green-300"
+              span class="ml-2 text-gray-700"
+                = b.text
+      div class="text-red-500 text-center mb-4" id="errors"
+        - if flash[:error].present?
+          = flash[:error]
+
+      div.text-center
+        button class="btn bg-green-600 text-white py-2 px-8 rounded-md"
+          = t('subscribe')

@@ -1,0 +1,11 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Ingresa un email."
+              invalid: "Email inválido."
+              taken: "Ya existe este email."
+    
